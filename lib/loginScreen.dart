@@ -49,7 +49,10 @@ class _loginScreenState extends State<loginScreen> {
               ),
               child: MaterialButton(
                 onPressed: () {},
-                child: Text('LOGIN'),
+                child: Text(
+                  'LOGIN',
+                  style: TextStyle(fontSize: 15),
+                ),
               ),
             ),
           )
