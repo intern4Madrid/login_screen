@@ -15,18 +15,44 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: Column(
         children: [
           Container(
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: BoxDecoration(color: Colors.blueAccent),
             padding: const EdgeInsets.all(16),
             child: SafeArea(
-                child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 24,
-                  child: Image.asset('Avatar-Profile-PNG-Photos.png'),
-                )
-              ],
-            )),
-          )
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 24,
+                    child: Image.asset('images/Avatar-Profile-PNG-Photos.png'),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'MADRID',
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      Text(
+                        'John Eric E.',
+                        style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
