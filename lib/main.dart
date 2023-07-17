@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:login_screen/loginScreen.dart';
+import 'package:provider/provider.dart';
+
+import 'core/Provider/Provider.dart';
+import 'loginScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,10 +11,17 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Login UI',
-      debugShowCheckedModeBanner: false,
-      home: loginScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => UserProvider()),
+      ],
+      child: MaterialApp(
+        title: 'User Provider Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: loginScreen(),
+      ),
     );
   }
 }
