@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:login_screen/loginScreen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -10,6 +10,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  bool tappedYes = false;
   @override
   void initState() {
     super.initState();
@@ -19,7 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   PageController controller = PageController(initialPage: 0);
   static final List<Widget> _widgetOption = <Widget>[
     const Center(child: Text("Home")),
-    const Center(child: Text("Contacts")),
+    const Center(child: Text("QR")),
     const Center(child: Text("Notification")),
   ];
   void _onItemTapped(int index) {
@@ -49,7 +50,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const [
+          children: [
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.indigoAccent,
@@ -64,14 +65,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             ListTile(
-              leading: Icon(
-                Icons.exit_to_app,
+              leading: IconButton(
+                icon: Icon(
+                  Icons.logout_outlined,
+                ),
+                onPressed: () async {
+                  final action = await AlertDialogs.yesCancelDialog(
+                    context,
+                    'Logout?',
+                    'You can always access your transactions by signing back in.',
+                  );
+                  if (action == DialogsAction.yes) {
+                    setState(() => tappedYes = true);
+                  } else {
+                    setState(() => tappedYes = false);
+                  }
+                },
               ),
-              title: Text('Logout',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w400,
-                  )),
+              title: Text(
+                'Logout',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
             ),
           ],
         ),
@@ -127,7 +144,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         height: 25,
                       ),
                       const Text(
-                        'Balance',
+                        'Available Balance',
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
                           color: Colors.black,
@@ -158,20 +175,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home),
+            icon: Icon(Icons.home_outlined),
             label: 'Home',
             backgroundColor: Colors.indigo,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.contact_mail_outlined,
+              Icons.qr_code_2_outlined,
             ),
-            label: 'Contacts',
+            label: 'QR',
             backgroundColor: Colors.indigoAccent,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.notifications,
+              Icons.notifications_active_outlined,
             ),
             label: 'Notification',
             backgroundColor: Colors.indigoAccent,
@@ -179,5 +196,71 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
       ),
     );
+  }
+}
+
+enum DialogsAction { yes, cancel }
+
+class AlertDialogs {
+  static Future<DialogsAction> yesCancelDialog(
+    BuildContext context,
+    String title,
+    String body,
+  ) async {
+    final action = await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          title: Text(title),
+          content: Text(body),
+          actions: <Widget>[
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xFF77202f)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                ),
+              ),
+              onPressed: () => Navigator.of(context).pop(DialogsAction.cancel),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
+            ),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xFF77202f)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                ),
+              ),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const loginScreen(),
+                ),
+              ),
+              child: const Text(
+                'Logout',
+                style: TextStyle(
+                  color: Colors.indigoAccent,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+    return (action != null) ? action : DialogsAction.cancel;
   }
 }

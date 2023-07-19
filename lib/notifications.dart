@@ -8,17 +8,17 @@ class Notifications extends StatefulWidget {
 
 class _NotificationsState extends State<Notifications> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.indigoAccent,
-        title: Text('Notifications'),
+        title: Text(
+          'NOTIFICATIONS',
+          style: TextStyle(
+            fontStyle: FontStyle.normal,
+            fontSize: 25,
+          ),
+        ),
       ),
     );
   }
