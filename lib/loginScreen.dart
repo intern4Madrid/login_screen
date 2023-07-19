@@ -144,7 +144,7 @@ class _loginScreenState extends State<loginScreen> {
                   child: Container(
                     child: Column(
                       children: [
-                        Text(
+                        const Text(
                           'Already have an account?',
                           style: TextStyle(
                             fontSize: 16,
@@ -154,10 +154,11 @@ class _loginScreenState extends State<loginScreen> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SignUp()),
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             'Sign Up',
                             style: TextStyle(
                               color: Colors.green,
