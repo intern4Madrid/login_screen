@@ -165,6 +165,47 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
               ),
+              SizedBox(height: 50),
+              Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          side: BorderSide(
+                            width: 3.0,
+                            color: Colors.indigoAccent,
+                          ),
+                        ),
+                        child: Text(
+                          'Send Money',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Send Money',
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                    ],
+                  ),
+                ],
+              )
             ],
           ),
         ],
