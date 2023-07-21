@@ -58,12 +58,13 @@ class _QRScreenState extends State<QRScreen> {
                   height: 10,
                 ),
                 Text(
-                  'Scan Me!!!',
+                  'Scan Me',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
-                )
+                ),
+                T
               ],
             ),
           ],
