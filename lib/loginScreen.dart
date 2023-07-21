@@ -22,11 +22,6 @@ class _loginScreenState extends State<loginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.indigoAccent,
-        title: const Text('Madrid Family Wallet'),
-        centerTitle: true,
-      ),
       body: Consumer<UserProvider>(
         builder: (context, user, child) => SingleChildScrollView(
           child: Form(
@@ -41,7 +36,8 @@ class _loginScreenState extends State<loginScreen> {
                       width: 200,
                       height: 150,
                       decoration: const BoxDecoration(
-                        color: Colors.indigo,
+                        shape: BoxShape.rectangle,
+                        color: Colors.indigoAccent,
                       ),
                       child: Image.asset('images/madrid.png'),
                     ),

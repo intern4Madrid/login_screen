@@ -43,10 +43,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.indigoAccent,
-        title: const Text('Madrid Family Wallet'),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.indigoAccent,
+      //   title: const Text('Madrid Family Wallet'),
+      // ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -93,122 +93,178 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
       ),
-      body: PageView(
-        controller: controller,
-        children: [
-          Column(
-            children: [
-              Container(
-                height: 200,
-                decoration: const BoxDecoration(color: Colors.indigoAccent),
-                padding: const EdgeInsets.all(16),
-                child: SafeArea(
-                  child: Column(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              decoration: const BoxDecoration(color: Colors.indigoAccent),
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      InkWell(
+                        onTap: () {},
+                        child: CircleAvatar(
+                          radius: 26,
+                          child: Image.asset(
+                              'images/Avatar-Profile-PNG-Photos.png'),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CircleAvatar(
-                            radius: 26,
-                            child: Image.asset(
-                                'images/Avatar-Profile-PNG-Photos.png'),
+                          Text(
+                            'MADRID',
+                            style: TextStyle(
+                              fontStyle: FontStyle.normal,
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'MADRID',
-                                style: TextStyle(
-                                  fontStyle: FontStyle.normal,
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                              Text(
-                                'John Eric E.',
-                                style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ],
+                          Text(
+                            'John Eric E.',
+                            style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      const Text(
-                        'Available Balance',
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          color: Colors.black,
-                          fontSize: 22,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      const Text(
-                        '\$1,000,000.00',
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 40,
-                        ),
-                      ),
                     ],
                   ),
-                ),
-              ),
-              SizedBox(height: 50),
-              Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          side: BorderSide(
-                            width: 3.0,
-                            color: Colors.indigoAccent,
-                          ),
-                        ),
-                        child: Text(
-                          'Send Money',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 25,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Send Money',
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                    ],
+                  const Text(
+                    'Available Balance',
+                    style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  const Text(
+                    '\$1,000,000.00',
+                    style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                    ),
                   ),
                 ],
-              )
-            ],
-          ),
-        ],
+              ),
+            ),
+            SingleChildScrollView(
+              child: Container(
+                height: 430,
+                child: GridView.count(
+                  primary: false,
+                  padding: const EdgeInsets.all(20),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  children: <Widget>[
+                    Card(
+                      child: InkWell(
+                        splashColor: Colors.indigoAccent,
+                        onTap: () {},
+                        child: const SizedBox(
+                          width: 300,
+                          height: 100,
+                          child: Center(
+                            child: Text(
+                              'Send Money',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.indigoAccent,
+                                fontSize: 20,
+                                fontStyle: FontStyle.normal,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      child: InkWell(
+                        splashColor: Colors.indigoAccent,
+                        onTap: () {},
+                        child: const SizedBox(
+                          width: 300,
+                          height: 100,
+                          child: Center(
+                            child: Text(
+                              'Express Send',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.indigoAccent,
+                                fontSize: 20,
+                                fontStyle: FontStyle.normal,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      child: InkWell(
+                        splashColor: Colors.indigoAccent,
+                        onTap: () {},
+                        child: const SizedBox(
+                          width: 300,
+                          height: 100,
+                          child: Center(
+                            child: Text(
+                              'Load',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.indigoAccent,
+                                fontSize: 20,
+                                fontStyle: FontStyle.normal,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      child: InkWell(
+                        splashColor: Colors.indigoAccent,
+                        onTap: () {},
+                        child: const SizedBox(
+                          width: 300,
+                          height: 100,
+                          child: Center(
+                            child: Text(
+                              'Connect to Bank',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.indigoAccent,
+                                fontSize: 20,
+                                fontStyle: FontStyle.normal,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
