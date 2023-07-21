@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Notifications extends StatefulWidget {
-  const Notifications({Key? key}) : super(key: key);
+class QRScreen extends StatefulWidget {
+  const QRScreen({Key? key}) : super(key: key);
   @override
-  State<Notifications> createState() => _NotificationsState();
+  State<QRScreen> createState() => _QRScreenState();
 }
 
-class _NotificationsState extends State<Notifications> {
+class _QRScreenState extends State<QRScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +27,7 @@ class _NotificationsState extends State<Notifications> {
                         children: [
                           Center(
                             child: Text(
-                              'Notifications',
+                              'QR Code',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontStyle: FontStyle.normal,
@@ -41,32 +41,29 @@ class _NotificationsState extends State<Notifications> {
                 ],
               ),
             ),
-            const Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(
-                    16.0,
-                  ),
-                  child: Text(
-                    'Notifications',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  padding: EdgeInsets.only(top: 60.0),
+                  child: Center(
+                    child: Container(
+                      width: 200,
+                      height: 150,
+                      child: Image.asset('images/qr.png'),
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 170,
+                  height: 10,
                 ),
-                Row(
-                  children: [
-                    Text('Date',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ],
-                ),
+                Text(
+                  'Scan Me!!!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                )
               ],
             ),
           ],

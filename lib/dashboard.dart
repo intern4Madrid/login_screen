@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:login_screen/loginScreen.dart';
 
@@ -16,57 +15,82 @@ class _DashboardScreenState extends State<DashboardScreen> {
     super.initState();
   }
 
-  int _currentIndex = 0;
-  PageController controller = PageController(initialPage: 0);
-  static final List<Widget> _widgetOption = <Widget>[
-    const Center(child: Text("Home")),
-    const Center(child: Text("QR")),
-    const Center(child: Text("Notification")),
-  ];
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-      if (_currentIndex == 0) {
-        if (kDebugMode) {
-          print(_currentIndex);
-        }
-      }
-    });
-    controller.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.ease,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.indigoAccent,
-      //   title: const Text('Madrid Family Wallet'),
-      // ),
+      // backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.indigoAccent,
+        title: const Text('Madrid Family Wallet'),
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.indigoAccent,
               ),
-              child: Text(
-                'Profile',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.normal,
+              child: Center(
+                child: Text(
+                  'Madrid, John Eric E.',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.normal,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
             ListTile(
               leading: IconButton(
-                icon: Icon(
+                icon: const Icon(
+                  Icons.settings_outlined,
+                ),
+                onPressed: () {},
+              ),
+              title: const Text(
+                'Settings',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.wb_sunny_outlined,
+                ),
+                onPressed: () {},
+              ),
+              title: const Text(
+                'Dark Theme',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.contacts_outlined,
+                ),
+                onPressed: () {},
+              ),
+              title: const Text(
+                'Contacts',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: IconButton(
+                icon: const Icon(
                   Icons.logout_outlined,
                 ),
                 onPressed: () async {
@@ -82,7 +106,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   }
                 },
               ),
-              title: Text(
+              title: const Text(
                 'Logout',
                 style: TextStyle(
                   fontSize: 15,
@@ -103,40 +127,44 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
-                        onTap: () {},
-                        child: CircleAvatar(
-                          radius: 26,
-                          child: Image.asset(
-                              'images/Avatar-Profile-PNG-Photos.png'),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'MADRID',
-                            style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w900,
+                      Container(
+                        color: Colors.indigoAccent,
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 26,
+                              child: Image.asset(
+                                  'images/Avatar-Profile-PNG-Photos.png'),
                             ),
-                          ),
-                          Text(
-                            'John Eric E.',
-                            style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ],
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'MADRID',
+                                  style: TextStyle(
+                                    fontStyle: FontStyle.normal,
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                                Text(
+                                  'John Eric E.',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -166,12 +194,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             SingleChildScrollView(
               child: Container(
-                height: 430,
+                height: 500,
                 child: GridView.count(
                   primary: false,
                   padding: const EdgeInsets.all(20),
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.95,
                   shrinkWrap: true,
                   crossAxisCount: 2,
                   children: <Widget>[
@@ -188,7 +215,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.indigoAccent,
-                                fontSize: 20,
+                                fontSize: 25,
                                 fontStyle: FontStyle.normal,
                               ),
                             ),
@@ -209,7 +236,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.indigoAccent,
-                                fontSize: 20,
+                                fontSize: 25,
                                 fontStyle: FontStyle.normal,
                               ),
                             ),
@@ -230,7 +257,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.indigoAccent,
-                                fontSize: 20,
+                                fontSize: 25,
                                 fontStyle: FontStyle.normal,
                               ),
                             ),
@@ -251,7 +278,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.indigoAccent,
-                                fontSize: 20,
+                                fontSize: 25,
                                 fontStyle: FontStyle.normal,
                               ),
                             ),
@@ -265,32 +292,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-            backgroundColor: Colors.indigo,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.qr_code_2_outlined,
-            ),
-            label: 'QR',
-            backgroundColor: Colors.indigoAccent,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications_active_outlined,
-            ),
-            label: 'Notification',
-            backgroundColor: Colors.indigoAccent,
-          ),
-        ],
       ),
     );
   }

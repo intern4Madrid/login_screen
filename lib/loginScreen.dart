@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_screen/SignUp.dart';
+import 'package:login_screen/bottomnavigation.dart';
 import 'package:login_screen/core/Provider/Provider.dart';
-import 'package:login_screen/dashboard.dart';
 import 'package:provider/provider.dart';
 
 class loginScreen extends StatefulWidget {
@@ -118,7 +118,7 @@ class _loginScreenState extends State<loginScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const DashboardScreen()),
+                                builder: (context) => const BottomNavigation()),
                           );
                         }
                       },
