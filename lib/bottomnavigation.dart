@@ -4,14 +4,14 @@ import 'package:login_screen/dashboard.dart';
 import 'package:login_screen/notifications.dart';
 import 'package:login_screen/qr.dart';
 
-class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
+class BottomNavigationScreen extends StatefulWidget {
+  const BottomNavigationScreen({Key? key}) : super(key: key);
 
   @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
+  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int _currentIndex = 0;
   PageController controller = PageController(initialPage: 0);
   static final List<Widget> _widgetOption = <Widget>[

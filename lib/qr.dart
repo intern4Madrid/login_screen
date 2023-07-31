@@ -64,7 +64,6 @@ class _QRScreenState extends State<QRScreen> {
                     fontSize: 20,
                   ),
                 ),
-                T
               ],
             ),
           ],

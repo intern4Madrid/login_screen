@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_screen/SignUp.dart';
 import 'package:login_screen/bottomnavigation.dart';
 import 'package:login_screen/core/Provider/Provider.dart';
+import 'package:login_screen/core/services/login_api.dart';
 import 'package:provider/provider.dart';
 
 class loginScreen extends StatefulWidget {
@@ -12,6 +13,7 @@ class loginScreen extends StatefulWidget {
 }
 
 class _loginScreenState extends State<loginScreen> {
+  Login login = Login();
   bool _isHiddenPassword = true;
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _usernameController = TextEditingController();
@@ -110,17 +112,33 @@ class _loginScreenState extends State<loginScreen> {
                     ),
                     child: MaterialButton(
                       onPressed: () async {
-                        if (_formKey.currentState!.validate()) {}
-                        if (_usernameController.text ==
+                        if (_formKey.currentState!.validate()) {
+                          String response = await login.login(
+                              username: _usernameController.text,
+                              password: _passwordController.text);
+                          if (response.toLowerCase().contains("success")) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const BottomNavigationScreen()),
+                            );
+                          } else {
+                            print("Account not found");
+                          }
+                        }
+                        /*if (_usernameController.text ==
                                 user.username.toString() &&
                             _passwordController.text ==
                                 user.password.toString()) {
+
+                          String response = await login.login(username: _usernameController.text,password: _passwordController.text)
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const BottomNavigation()),
                           );
-                        }
+                        }*/
                       },
                       child: const Text(
                         'LOGIN',

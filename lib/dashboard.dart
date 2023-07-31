@@ -118,7 +118,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
       body: SafeArea(
-        child: Column(
+        child: ListView(
+          shrinkWrap: true,
           children: [
             Container(
               height: 200,
@@ -192,102 +193,109 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ],
               ),
             ),
-            SingleChildScrollView(
-              child: Container(
-                height: 500,
-                child: GridView.count(
-                  primary: false,
-                  padding: const EdgeInsets.all(20),
-                  childAspectRatio: 0.95,
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  children: <Widget>[
-                    Card(
-                      child: InkWell(
-                        splashColor: Colors.indigoAccent,
-                        onTap: () {},
-                        child: const SizedBox(
-                          width: 300,
-                          height: 100,
-                          child: Center(
-                            child: Text(
-                              'Send Money',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.indigoAccent,
-                                fontSize: 25,
-                                fontStyle: FontStyle.normal,
+            Container(
+              height: 500,
+              child: GridView.count(
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                childAspectRatio: 0.95,
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                children: <Widget>[
+                  Card(
+                    child: InkWell(
+                      splashColor: Colors.indigoAccent,
+                      onTap: () {},
+                      child: const SizedBox(
+                        width: 300,
+                        height: 100,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Send Money',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.indigoAccent,
+                                  fontSize: 25,
+                                  fontStyle: FontStyle.normal,
+                                ),
                               ),
+                              Icon(
+                                Icons.monetization_on_sharp,
+                                size: 100,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Card(
+                    child: InkWell(
+                      splashColor: Colors.indigoAccent,
+                      onTap: () {},
+                      child: const SizedBox(
+                        width: 300,
+                        height: 100,
+                        child: Center(
+                          child: Text(
+                            'Express Send',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.indigoAccent,
+                              fontSize: 25,
+                              fontStyle: FontStyle.normal,
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        splashColor: Colors.indigoAccent,
-                        onTap: () {},
-                        child: const SizedBox(
-                          width: 300,
-                          height: 100,
-                          child: Center(
-                            child: Text(
-                              'Express Send',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.indigoAccent,
-                                fontSize: 25,
-                                fontStyle: FontStyle.normal,
-                              ),
+                  ),
+                  Card(
+                    child: InkWell(
+                      splashColor: Colors.indigoAccent,
+                      onTap: () {},
+                      child: const SizedBox(
+                        width: 300,
+                        height: 100,
+                        child: Center(
+                          child: Text(
+                            'Load',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.indigoAccent,
+                              fontSize: 25,
+                              fontStyle: FontStyle.normal,
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        splashColor: Colors.indigoAccent,
-                        onTap: () {},
-                        child: const SizedBox(
-                          width: 300,
-                          height: 100,
-                          child: Center(
-                            child: Text(
-                              'Load',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.indigoAccent,
-                                fontSize: 25,
-                                fontStyle: FontStyle.normal,
-                              ),
+                  ),
+                  Card(
+                    child: InkWell(
+                      splashColor: Colors.indigoAccent,
+                      onTap: () {},
+                      child: const SizedBox(
+                        width: 300,
+                        height: 100,
+                        child: Center(
+                          child: Text(
+                            'Connect to Bank',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.indigoAccent,
+                              fontSize: 25,
+                              fontStyle: FontStyle.normal,
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        splashColor: Colors.indigoAccent,
-                        onTap: () {},
-                        child: const SizedBox(
-                          width: 300,
-                          height: 100,
-                          child: Center(
-                            child: Text(
-                              'Connect to Bank',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.indigoAccent,
-                                fontSize: 25,
-                                fontStyle: FontStyle.normal,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
